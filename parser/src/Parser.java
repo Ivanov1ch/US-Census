@@ -47,9 +47,53 @@ public class Parser{
         return result;
     }
 
+    private List<Territory> getTop(int n) {
+        List<Territory> result = new ArrayList<>(n + 1);
+        for(int i = 0; i < censusData.size(); i++) {
+            Parser.insertToList(result, censusData.get(i), n);
+        }
+        return result;
+    }
+
+    private List<Territory> getTop(int n, int startIndex, int endIndex) {
+        List<Territory> result = new ArrayList<>(n + 1);
+        for(int i = 0; i < censusData.size(); i++) {
+            Parser.insertToList(result, censusData.get(i), n, startIndex, endIndex);
+        }
+        return result;
+    }
+
+    private static void insertToList(List<Territory> list, Territory territory, int limit) {
+        int i = 0;
+        for(; i < list.size(); i++) {
+            if(!list.get(i).compare(territory)) {
+                break;
+            }
+        }
+        list.add(i, territory);
+        if(list.size() > limit) {
+            list.remove(list.size() - 1);
+        }
+    }
+
+    private static void insertToList(List<Territory> list, Territory territory, int limit, int start, int end) {
+        int i = 0;
+        for(; i < list.size(); i++) {
+            if(!list.get(i).compare(territory, start, end)) {
+                break;
+            }
+        }
+        list.add(i, territory);
+        if(list.size() > limit) {
+            list.remove(list.size() - 1);
+        }
+    }
+
     public static void main(String[] args) throws IOException{
         Parser parser = new Parser("US-Census-2017.csv");
-        System.out.println(parser);
+        //System.out.println(parser);
+        System.out.println(parser.getTop(5));
+        System.out.println(parser.getTop(5, 3, 12));
     }
 
     private class Territory {
@@ -87,6 +131,29 @@ public class Parser{
                 result += Parser.columns[i] + ": " + data.get(i) + "\n";
             }
             return result;
+        }
+
+        public boolean compareIndex(Territory other, int index) {
+            Object a = data.get(index), b = other.data.get(index);
+            if(a instanceof Integer && b instanceof Integer)
+                return (int) a > (int) b;
+            throw new IllegalArgumentException("Cannot compare non-Integers");
+        }
+
+        public boolean compare(Territory other) {
+            // compares population
+            return compareIndex(other, data.size() - 1);
+        }
+
+        public boolean compare(Territory other, int start, int end) {
+            // compares population growth over that period of time
+            Object a = data.get(start), b = data.get(end);
+            Object c = other.data.get(start), d = other.data.get(end);
+
+            if(a instanceof Integer && b instanceof Integer && c instanceof Integer && d instanceof Integer) {
+                return (int) b - (int) a > (int) d - (int) c;
+            }
+            throw new IllegalArgumentException("Cannot compare non-Integers");
         }
     }
 
