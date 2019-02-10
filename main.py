@@ -9,5 +9,8 @@ p = subprocess.Popen('java Parser', cwd=os.path.join('parser', 'src'))
 p.communicate()
 
 # Run website
-subprocess.call('{0} {1}'.format(os.path.join('site', 'venv', 'Scripts', 'python.exe'), os.path.join('site', 'app.py')),
-                shell=True)
+venv_python = os.path.join('site', 'venv', 'Scripts', 'python.exe')
+if os.path.exists(venv_python):
+    subprocess.call('{0} {1}'.format(venv_python, os.path.join('site', 'app.py')), shell=True)
+else:
+    subprocess.call('{0} {1}'.format('python', os.path.join('site', 'app.py')), shell=True)
