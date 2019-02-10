@@ -42,7 +42,7 @@ function formatNumber(number) {
     number = number.toFixed(2);
     splitNum = number.split('.');
     splitNum[0] = splitNum[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return splitNum.join(".");
+    return splitNum.join(".").replace('.00', '');
 }
 
 function getNewData(currentData, stateData) {
@@ -119,28 +119,3 @@ $(document).ready(function () {
         }, 1000);
     });
 });
-
-var footer = $('footer:first');
-
-function adjustFooter() {
-    if ($('header:first').outerHeight() + $('main:first').outerHeight() + footer.outerHeight() < $(window).height()) {
-        footer.css({
-            'position': 'fixed',
-            'left': 0,
-            'right': 0,
-            'bottom': 0
-        });
-    } else {
-        footer.css({
-            'position': 'static',
-            'left': 'unset',
-            'right': 'unset',
-            'bottom': 'unset'
-        });
-    }
-}
-
-$(window).bind('resize', function () {
-    adjustFooter();
-});
-$(adjustFooter());
