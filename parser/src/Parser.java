@@ -4,22 +4,31 @@
  * @version 1.0 2/9/19
  */
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Parser{
 
-    private static String[] columns = {"ID1", "ID2", "Name", "Census",
-            "2010Apr", "2010Jun", "2011", "2012", "2013", "2014", "2015", "2016", "2017"}; // 2010-2017 are estimates
-    private static int skipLines = 2;
+    public static final String[] columns = {"ID1", "ID2", "Name", "Census",
+            "2010Apr", "2010Jun", "2011", "20columns.length - 1", "2013",
+            "2014", "2015", "2016", "2017"}; // 2010-2017 are estimates
+    public static final int skipLines = 2;
+    public static final int skipColumns = 3; // first column with population data
+    private final Analyzer analyzer;
+    public static final NameConverter nameConverter = new NameConverter();;
 
     private Scanner input;
+
     private List<Territory> censusData;
 
     public Parser(String fileName)  throws IOException {
         input = new Scanner(new File(fileName));
         parseFile();
+        analyzer = new Analyzer(this);
+    }
+
+    public List<Territory> getCensusData() {
+        return censusData;
     }
 
     public static String[] getFormattedLine(String row) {
@@ -39,6 +48,41 @@ public class Parser{
         }
     }
 
+    private void outputToFile(String filePath) throws IOException{
+        Writer output = new BufferedWriter(new FileWriter(filePath));
+        appendToFile(analyzer.getTop(5), "Most Populous Territories", output);
+        appendToFile(analyzer.getTop(5, skipColumns, columns.length - 1),
+                "Fastest Growing Territories", output, skipColumns, columns.length - 1);
+        appendToFile(analyzer.getBottom(5), "Least Populous Territories", output);
+        appendToFile(analyzer.getBottom(5, skipColumns, columns.length - 1),
+                "Slowest-Growing/Shrinking Territories", output, skipColumns, columns.length - 1);
+        output.close();
+    }
+
+    private void appendToFile(List<Territory> list, String title, Writer output)  throws IOException {
+        output.append(title + "\n");
+        for(int i = 0; i < list.size(); i++) {
+            output.append(formatTerritory(list.get(i)));
+        }
+        output.append("\n");
+    }
+
+    private void appendToFile(List<Territory> list, String title, Writer output, int start, int end)  throws IOException {
+        output.append(title + "\n");
+        for(int i = 0; i < list.size(); i++) {
+            output.append(formatTerritory(list.get(i), start, end));
+        }
+        output.append("\n");
+    }
+
+    private static String formatTerritory(Territory territory) {
+        return String.format("%s %d\n", nameConverter.toStateCode(territory.getName()), territory.getPop());
+    }
+
+    private static String formatTerritory(Territory territory, int start, int end) {
+        return String.format("%s %d\n", nameConverter.toStateCode(territory.getName()), territory.getdPop(start, end));
+    }
+
     public String toString() {
         String result = "";
         for(int i = 0; i < censusData.size(); i++) {
@@ -47,114 +91,16 @@ public class Parser{
         return result;
     }
 
-    private List<Territory> getTop(int n) {
-        List<Territory> result = new ArrayList<>(n + 1);
-        for(int i = 0; i < censusData.size(); i++) {
-            Parser.insertToList(result, censusData.get(i), n);
-        }
-        return result;
-    }
-
-    private List<Territory> getTop(int n, int startIndex, int endIndex) {
-        List<Territory> result = new ArrayList<>(n + 1);
-        for(int i = 0; i < censusData.size(); i++) {
-            Parser.insertToList(result, censusData.get(i), n, startIndex, endIndex);
-        }
-        return result;
-    }
-
-    private static void insertToList(List<Territory> list, Territory territory, int limit) {
-        int i = 0;
-        for(; i < list.size(); i++) {
-            if(!list.get(i).compare(territory)) {
-                break;
-            }
-        }
-        list.add(i, territory);
-        if(list.size() > limit) {
-            list.remove(list.size() - 1);
-        }
-    }
-
-    private static void insertToList(List<Territory> list, Territory territory, int limit, int start, int end) {
-        int i = 0;
-        for(; i < list.size(); i++) {
-            if(!list.get(i).compare(territory, start, end)) {
-                break;
-            }
-        }
-        list.add(i, territory);
-        if(list.size() > limit) {
-            list.remove(list.size() - 1);
-        }
-    }
-
     public static void main(String[] args) throws IOException{
         Parser parser = new Parser("US-Census-2017.csv");
         //System.out.println(parser);
-        System.out.println(parser.getTop(5));
-        System.out.println(parser.getTop(5, 3, 12));
-    }
+        //System.out.println(parser.analyzer.getTop(5));
+        //System.out.println(parser.analyzer.getTop(5, skipColumns, columns.length - 1));
 
-    private class Territory {
+        //System.out.println(parser.analyzer.getBottom(5));
+        //System.out.println(parser.analyzer.getBottom(5, skipColumns, columns.length - 1));
 
-        private List<Object> data;
-
-        public Territory(String row) {
-            this(Parser.getFormattedLine(row));
-        }
-
-        public Territory(String[] row) {
-            data = new ArrayList<>();
-            for(int i = 0; i < row.length; i++) {
-                Object obj = row[i];
-                try {
-                    obj = Integer.parseInt(row[i]);
-                }
-                catch(Exception e) {
-                    // do nothing
-                }
-                data.add(obj);
-            }
-            if(data.size() != Parser.columns.length) {
-                throw new IllegalArgumentException("Input row length does not match the expected length");
-            }
-        }
-
-        public List<Object> getData() {
-            return data;
-        }
-
-        public String toString() {
-            String result = "";
-            for(int i = 0; i < Parser.columns.length; i++) {
-                result += Parser.columns[i] + ": " + data.get(i) + "\n";
-            }
-            return result;
-        }
-
-        public boolean compareIndex(Territory other, int index) {
-            Object a = data.get(index), b = other.data.get(index);
-            if(a instanceof Integer && b instanceof Integer)
-                return (int) a > (int) b;
-            throw new IllegalArgumentException("Cannot compare non-Integers");
-        }
-
-        public boolean compare(Territory other) {
-            // compares population
-            return compareIndex(other, data.size() - 1);
-        }
-
-        public boolean compare(Territory other, int start, int end) {
-            // compares population growth over that period of time
-            Object a = data.get(start), b = data.get(end);
-            Object c = other.data.get(start), d = other.data.get(end);
-
-            if(a instanceof Integer && b instanceof Integer && c instanceof Integer && d instanceof Integer) {
-                return (int) b - (int) a > (int) d - (int) c;
-            }
-            throw new IllegalArgumentException("Cannot compare non-Integers");
-        }
+        parser.outputToFile("Analysis.txt");
     }
 
 }
