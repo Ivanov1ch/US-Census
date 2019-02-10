@@ -53,12 +53,12 @@ public class Parser{
         int start = skipColumns, end = columns.length - 1;
         appendToFile(analyzer.getTop(censusData.size()), "Population " + columns[columns.length - 1], output);
         appendToFile(analyzer.getTop(censusData.size(), start, end), "Population Growth", output, start, end);
-        appendToFile(analyzer.getTop(5), "Most Populous Territories", output);
+        /*appendToFile(analyzer.getTop(5), "Most Populous Territories", output);
         appendToFile(analyzer.getTop(5, start, end),
                 "Fastest Growing Territories", output, start, end);
         appendToFile(analyzer.getBottom(5), "Least Populous Territories", output);
         appendToFile(analyzer.getBottom(5, start, end),
-                "Slowest-Growing/Shrinking Territories", output, start, end);
+                "Slowest-Growing/Shrinking Territories", output, start, end);*/
         output.close();
     }
 

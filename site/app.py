@@ -1,5 +1,6 @@
 from flask import *
 from state import State
+from colour import Color
 import os
 
 app = Flask(__name__)
@@ -14,6 +15,18 @@ def get_state(name):
             return state
 
     return None
+
+
+def get_color_list():
+    green = Color("#00ff00")
+    red = Color("#ff0000")
+
+    colors = list(red.range_to(green, len(states)))
+
+    for index in range(len(colors)):
+        colors[index] = "{0}".format(colors[index].hex_l)
+
+    return json.dumps(colors)
 
 
 @app.route('/')
@@ -35,82 +48,39 @@ if __name__ == '__main__':
         year = int(next(file).split(' ')[1])
 
         line = next(file)
+        rank = 1
         # Go over the states' populations
         while line != '\n':
             ln = line.replace('\n', '')
             data = ln.split(' ')
             states.append(State(data[0], int(data[1])))
+            get_state(data[0]).set_population_rank(rank)
 
+            rank += 1
             line = next(file)
 
         next(file)  # Clear title line
 
         line = next(file)  # Go to population growth
+        rank = 1
         # Go over the states' growth rates
         while line != '\n':
             ln = line.replace('\n', '')
             data = ln.split(' ')
             get_state(data[0]).set_rate_of_growth(int(data[1]))
-
-            line = next(file)
-
-        next(file)  # Clear title line
-
-        line = next(file)  # Go to most populous
-        rank = 1
-        while line != '\n':
-            ln = line.replace('\n', '')
-            data = ln.split(' ')
-            get_state(data[0]).set_population_rank(rank)
-            rank += 1
-            line = next(file)
-
-        next(file)  # Clear title line
-
-        line = next(file)  # Go to fastest growing
-        rank = 1
-        # Go over the states' growth rates
-        while line != '\n':
-            ln = line.replace('\n', '')
-            data = ln.split(' ')
             get_state(data[0]).set_fastest_growth_rank(rank)
-            rank += 1
-            line = next(file)
 
-        next(file)  # Clear title line
-
-        line = next(file)  # Go to least populous
-        rank = 1
-        # Go over the states' populations
-        while line != '\n':
-            ln = line.replace('\n', '')
-            data = ln.split(' ')
-            get_state(data[0]).set_lowest_population_rank(rank)
-            rank += 1
-            line = next(file)
-
-        next(file)  # Clear title line
-
-        line = next(file)  # Go to shrinking
-        rank = 1
-        # Go over the states' growth rates
-        while line != '\n':
-            ln = line.replace('\n', '')
-            data = ln.split(' ')
-            get_state(data[0]).set_slowest_growth_rank(rank)
             rank += 1
             line = next(file)
 
     with open(data_output_path, 'w+') as file:
         file.write('{\n')
         file.write('    "year": {0},\n'.format(year))
-        for state in states[:-1]:
-            file.write('    "{0}":{1},\n'.format(state.get_name(), json.dumps(state.__dict__, indent=4, sort_keys=True).replace('\n', '\n    ')))
-
-        # Last state needs to be treated differently to remove the last comma
-        line = '    "{0}":{1},\n'.format(states[-1].get_name(), json.dumps(states[-1].__dict__, indent=4, sort_keys=True).replace('\n', '\n    '))
-        line = line[:-2] + '\n'
-        file.write(line)
+        for state in states:
+            file.write('    "{0}":{1},\n'.format(state.get_name(),
+                                                 json.dumps(state.__dict__, indent=4, sort_keys=True).replace('\n',
+                                                                                                              '\n    ')))
+        file.write('    "colors":{0}\n'.format(get_color_list()))
 
         file.write('}\n')
 
