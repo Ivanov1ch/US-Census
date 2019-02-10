@@ -3,3 +3,4 @@
 site/venv/*
 *.class
 Analysis.txt
+site/__pycache__/*
