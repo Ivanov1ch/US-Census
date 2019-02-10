@@ -13,7 +13,7 @@ public class Parser{
             "2010Apr", "2010Jun", "2011", "20columns.length - 1", "2013",
             "2014", "2015", "2016", "2017"}; // 2010-2017 are estimates
     public static final int skipLines = 2;
-    public static final int skipColumns = 3; // first column with population data
+    public static final int skipColumns = 5; // first column with population data, and skip the extraneous 2010 data
     private final Analyzer analyzer;
     public static final NameConverter nameConverter = new NameConverter();;
 
@@ -48,14 +48,18 @@ public class Parser{
         }
     }
 
-    private void outputToFile(String filePath) throws IOException{
+    private void outputToFile(String filePath) throws IOException {
         Writer output = new BufferedWriter(new FileWriter(filePath));
+        int start = skipColumns, end = columns.length - 1;
         appendToFile(analyzer.getTop(5), "Most Populous Territories", output);
-        appendToFile(analyzer.getTop(5, skipColumns, columns.length - 1),
-                "Fastest Growing Territories", output, skipColumns, columns.length - 1);
+        appendToFile(analyzer.getTop(5, start, end),
+                "Fastest Growing Territories", output, start, end);
         appendToFile(analyzer.getBottom(5), "Least Populous Territories", output);
-        appendToFile(analyzer.getBottom(5, skipColumns, columns.length - 1),
-                "Slowest-Growing/Shrinking Territories", output, skipColumns, columns.length - 1);
+        appendToFile(analyzer.getBottom(5, start, end),
+                "Slowest-Growing/Shrinking Territories", output, start, end);
+
+        appendToFile(analyzer.getTop(censusData.size()), "Population " + columns[columns.length - 1], output);
+        appendToFile(analyzer.getTop(censusData.size(), start, end), "Population Growth", output, start, end);
         output.close();
     }
 
@@ -80,7 +84,7 @@ public class Parser{
     }
 
     private static String formatTerritory(Territory territory, int start, int end) {
-        return String.format("%s %d\n", nameConverter.toStateCode(territory.getName()), territory.getdPop(start, end));
+        return String.format("%s %d\n", nameConverter.toStateCode(territory.getName()), territory.getPopRate(start, end));
     }
 
     public String toString() {

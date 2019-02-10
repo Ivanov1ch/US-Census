@@ -44,11 +44,12 @@ public class Territory {
         throw new IllegalArgumentException("Cannot compare non-Integers");
     }
 
-    public Integer getdPop(int start, int end) {
+    public Integer getPopRate(int start, int end) {
+        // returns in units of people / year, assuming (end - start) is the number of years
         Object a = data.get(start), b = data.get(end);
 
         if (a instanceof Integer && b instanceof Integer) {
-            return (int) b - (int) a;
+            return ((int) b - (int) a) / (end - start);
         }
         throw new IllegalArgumentException("Cannot compare non-Integers");
     }
@@ -72,6 +73,6 @@ public class Territory {
 
     public boolean compare(Territory other, int start, int end) {
         // compares population growth over that period of time
-        return getdPop(start, end) < other.getdPop(start, end);
+        return getPopRate(start, end) < other.getPopRate(start, end);
     }
 }
