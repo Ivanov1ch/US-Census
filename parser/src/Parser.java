@@ -51,15 +51,14 @@ public class Parser{
     private void outputToFile(String filePath) throws IOException {
         Writer output = new BufferedWriter(new FileWriter(filePath));
         int start = skipColumns, end = columns.length - 1;
+        appendToFile(analyzer.getTop(censusData.size()), "Population " + columns[columns.length - 1], output);
+        appendToFile(analyzer.getTop(censusData.size(), start, end), "Population Growth", output, start, end);
         appendToFile(analyzer.getTop(5), "Most Populous Territories", output);
         appendToFile(analyzer.getTop(5, start, end),
                 "Fastest Growing Territories", output, start, end);
         appendToFile(analyzer.getBottom(5), "Least Populous Territories", output);
         appendToFile(analyzer.getBottom(5, start, end),
                 "Slowest-Growing/Shrinking Territories", output, start, end);
-
-        appendToFile(analyzer.getTop(censusData.size()), "Population " + columns[columns.length - 1], output);
-        appendToFile(analyzer.getTop(censusData.size(), start, end), "Population Growth", output, start, end);
         output.close();
     }
 
@@ -96,7 +95,7 @@ public class Parser{
     }
 
     public static void main(String[] args) throws IOException{
-        Parser parser = new Parser("US-Census-2017.csv");
+        Parser parser = new Parser("../../US-Census-2017.csv");
         //System.out.println(parser);
         //System.out.println(parser.analyzer.getTop(5));
         //System.out.println(parser.analyzer.getTop(5, skipColumns, columns.length - 1));
@@ -104,7 +103,7 @@ public class Parser{
         //System.out.println(parser.analyzer.getBottom(5));
         //System.out.println(parser.analyzer.getBottom(5, skipColumns, columns.length - 1));
 
-        parser.outputToFile("Analysis.txt");
+        parser.outputToFile("../../Analysis.txt");
     }
 
 }

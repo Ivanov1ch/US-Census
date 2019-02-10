@@ -2,3 +2,4 @@
 *.iml
 site/venv/*
 *.class
+Analysis.txt

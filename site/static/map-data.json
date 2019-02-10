@@ -1,0 +1,471 @@
+{
+    "year": 2017,
+    "CA":{
+        "fastest_growth_rank": 2,
+        "lowest_population_rank": 0,
+        "name": "CA",
+        "population": 39536653,
+        "population_rank": 1,
+        "rog": 315566,
+        "slowest_growth_rank": 0
+    },
+    "TX":{
+        "fastest_growth_rank": 1,
+        "lowest_population_rank": 0,
+        "name": "TX",
+        "population": 28304596,
+        "population_rank": 2,
+        "rog": 437564,
+        "slowest_growth_rank": 0
+    },
+    "FL":{
+        "fastest_growth_rank": 3,
+        "lowest_population_rank": 0,
+        "name": "FL",
+        "population": 20984400,
+        "population_rank": 3,
+        "rog": 305419,
+        "slowest_growth_rank": 0
+    },
+    "NY":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "NY",
+        "population": 19849399,
+        "population_rank": 4,
+        "rog": 63459,
+        "slowest_growth_rank": 0
+    },
+    "PA":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "PA",
+        "population": 12805537,
+        "population_rank": 5,
+        "rog": 13496,
+        "slowest_growth_rank": 0
+    },
+    "IL":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "IL",
+        "population": 12802023,
+        "population_rank": 0,
+        "rog": -5596,
+        "slowest_growth_rank": 2
+    },
+    "OH":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "OH",
+        "population": 11658609,
+        "population_rank": 0,
+        "rog": 17046,
+        "slowest_growth_rank": 0
+    },
+    "GA":{
+        "fastest_growth_rank": 4,
+        "lowest_population_rank": 0,
+        "name": "GA",
+        "population": 10429379,
+        "population_rank": 0,
+        "rog": 102383,
+        "slowest_growth_rank": 0
+    },
+    "NC":{
+        "fastest_growth_rank": 5,
+        "lowest_population_rank": 0,
+        "name": "NC",
+        "population": 10273419,
+        "population_rank": 0,
+        "rog": 99881,
+        "slowest_growth_rank": 0
+    },
+    "MI":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "MI",
+        "population": 9962311,
+        "population_rank": 0,
+        "rog": 12225,
+        "slowest_growth_rank": 0
+    },
+    "NJ":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "NJ",
+        "population": 9005644,
+        "population_rank": 0,
+        "rog": 28848,
+        "slowest_growth_rank": 0
+    },
+    "VA":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "VA",
+        "population": 8470020,
+        "population_rank": 0,
+        "rog": 63544,
+        "slowest_growth_rank": 0
+    },
+    "WA":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "WA",
+        "population": 7405743,
+        "population_rank": 0,
+        "rog": 94908,
+        "slowest_growth_rank": 0
+    },
+    "AZ":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "AZ",
+        "population": 7016270,
+        "population_rank": 0,
+        "rog": 87038,
+        "slowest_growth_rank": 0
+    },
+    "MA":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "MA",
+        "population": 6859819,
+        "population_rank": 0,
+        "rog": 42125,
+        "slowest_growth_rank": 0
+    },
+    "TN":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "TN",
+        "population": 6715984,
+        "population_rank": 0,
+        "rog": 51443,
+        "slowest_growth_rank": 0
+    },
+    "IN":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "IN",
+        "population": 6666818,
+        "population_rank": 0,
+        "rog": 25255,
+        "slowest_growth_rank": 0
+    },
+    "MO":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "MO",
+        "population": 6113532,
+        "population_rank": 0,
+        "rog": 16835,
+        "slowest_growth_rank": 0
+    },
+    "MD":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "MD",
+        "population": 6052177,
+        "population_rank": 0,
+        "rog": 37725,
+        "slowest_growth_rank": 0
+    },
+    "WI":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "WI",
+        "population": 5795483,
+        "population_rank": 0,
+        "rog": 15011,
+        "slowest_growth_rank": 0
+    },
+    "CO":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "CO",
+        "population": 5607154,
+        "population_rank": 0,
+        "rog": 79875,
+        "slowest_growth_rank": 0
+    },
+    "MN":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "MN",
+        "population": 5576606,
+        "population_rank": 0,
+        "rog": 37985,
+        "slowest_growth_rank": 0
+    },
+    "SC":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "SC",
+        "population": 5024369,
+        "population_rank": 0,
+        "rog": 55505,
+        "slowest_growth_rank": 0
+    },
+    "AL":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "AL",
+        "population": 4874747,
+        "population_rank": 0,
+        "rog": 12738,
+        "slowest_growth_rank": 0
+    },
+    "LA":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "LA",
+        "population": 4684333,
+        "population_rank": 0,
+        "rog": 19923,
+        "slowest_growth_rank": 0
+    },
+    "KY":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "KY",
+        "population": 4454189,
+        "population_rank": 0,
+        "rog": 15177,
+        "slowest_growth_rank": 0
+    },
+    "OR":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "OR",
+        "population": 4142776,
+        "population_rank": 0,
+        "rog": 43671,
+        "slowest_growth_rank": 0
+    },
+    "OK":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "OK",
+        "population": 3930864,
+        "population_rank": 0,
+        "rog": 24476,
+        "slowest_growth_rank": 0
+    },
+    "CT":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "CT",
+        "population": 3588184,
+        "population_rank": 0,
+        "rog": 1144,
+        "slowest_growth_rank": 0
+    },
+    "PR":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "PR",
+        "population": 3337177,
+        "population_rank": 0,
+        "rog": -54906,
+        "slowest_growth_rank": 1
+    },
+    "IA":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "IA",
+        "population": 3145711,
+        "population_rank": 0,
+        "rog": 13641,
+        "slowest_growth_rank": 0
+    },
+    "UT":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "UT",
+        "population": 3101833,
+        "population_rank": 0,
+        "rog": 46653,
+        "slowest_growth_rank": 0
+    },
+    "AR":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "AR",
+        "population": 3004279,
+        "population_rank": 0,
+        "rog": 11791,
+        "slowest_growth_rank": 0
+    },
+    "NV":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "NV",
+        "population": 2998039,
+        "population_rank": 0,
+        "rog": 42177,
+        "slowest_growth_rank": 0
+    },
+    "MS":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "MS",
+        "population": 2984100,
+        "population_rank": 0,
+        "rog": 1951,
+        "slowest_growth_rank": 0
+    },
+    "KS":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "KS",
+        "population": 2913123,
+        "population_rank": 0,
+        "rog": 7817,
+        "slowest_growth_rank": 0
+    },
+    "NM":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "NM",
+        "population": 2088070,
+        "population_rank": 0,
+        "rog": 3351,
+        "slowest_growth_rank": 0
+    },
+    "NE":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "NE",
+        "population": 1920076,
+        "population_rank": 0,
+        "rog": 12874,
+        "slowest_growth_rank": 0
+    },
+    "WV":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "WV",
+        "population": 1815857,
+        "population_rank": 0,
+        "rog": -5494,
+        "slowest_growth_rank": 3
+    },
+    "ID":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "ID",
+        "population": 1716943,
+        "population_rank": 0,
+        "rog": 20861,
+        "slowest_growth_rank": 0
+    },
+    "HI":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "HI",
+        "population": 1427538,
+        "population_rank": 0,
+        "rog": 9103,
+        "slowest_growth_rank": 0
+    },
+    "NH":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "NH",
+        "population": 1342795,
+        "population_rank": 0,
+        "rog": 3727,
+        "slowest_growth_rank": 0
+    },
+    "ME":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "ME",
+        "population": 1335907,
+        "population_rank": 0,
+        "rog": 1191,
+        "slowest_growth_rank": 0
+    },
+    "RI":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "RI",
+        "population": 1059639,
+        "population_rank": 0,
+        "rog": 924,
+        "slowest_growth_rank": 5
+    },
+    "MT":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "MT",
+        "population": 1050493,
+        "population_rank": 0,
+        "rog": 8569,
+        "slowest_growth_rank": 0
+    },
+    "DE":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "DE",
+        "population": 961939,
+        "population_rank": 0,
+        "rog": 8889,
+        "slowest_growth_rank": 0
+    },
+    "SD":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 0,
+        "name": "SD",
+        "population": 869666,
+        "population_rank": 0,
+        "rog": 7634,
+        "slowest_growth_rank": 0
+    },
+    "ND":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 5,
+        "name": "ND",
+        "population": 755393,
+        "population_rank": 0,
+        "rog": 11553,
+        "slowest_growth_rank": 0
+    },
+    "AK":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 4,
+        "name": "AK",
+        "population": 739795,
+        "population_rank": 0,
+        "rog": 3682,
+        "slowest_growth_rank": 0
+    },
+    "DC":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 3,
+        "name": "DC",
+        "population": 693972,
+        "population_rank": 0,
+        "rog": 12704,
+        "slowest_growth_rank": 0
+    },
+    "VT":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 2,
+        "name": "VT",
+        "population": 623657,
+        "population_rank": 0,
+        "rog": -312,
+        "slowest_growth_rank": 4
+    },
+    "WY":{
+        "fastest_growth_rank": 0,
+        "lowest_population_rank": 1,
+        "name": "WY",
+        "population": 579315,
+        "population_rank": 0,
+        "rog": 2134,
+        "slowest_growth_rank": 0
+    }
+}
