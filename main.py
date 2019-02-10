@@ -2,10 +2,10 @@ import subprocess
 import os
 
 # Run Java
-p = subprocess.Popen('javac *.java', cwd=os.path.join('parser', 'src'))
+p = subprocess.Popen('javac *.java', cwd=os.path.join('parser', 'src'), shell=True)
 p.communicate()  # Wait for finish
 
-p = subprocess.Popen('java Parser', cwd=os.path.join('parser', 'src'))
+p = subprocess.Popen('java Parser', cwd=os.path.join('parser', 'src'), shell=True)
 p.communicate()
 
 # Run website
