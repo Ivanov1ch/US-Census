@@ -37,7 +37,7 @@ def home():
 if __name__ == '__main__':
     current_directory = os.path.dirname(os.path.realpath(__file__))
     data_output_path = os.path.join(current_directory, 'static', 'map-data.json')
-    analysis_path = os.path.join(current_directory, '..', 'Analysis.txt')
+    analysis_path = os.path.join(current_directory, 'Analysis.txt')
 
     if os.path.exists(data_output_path):
         os.remove(data_output_path)
