@@ -3,3 +3,5 @@
 site/venv/*
 *.class
 site/__pycache__/*
+__pychache__/*
+venv/*
