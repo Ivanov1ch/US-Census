@@ -31,7 +31,7 @@ def get_color_list():
 
 @app.route('/')
 def home():
-    return render_template('index.html', num_areas=len(states) - 1)
+    return render_template('index.html', num_areas=51)
 
 
 if __name__ == '__main__':
