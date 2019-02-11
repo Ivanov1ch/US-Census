@@ -84,4 +84,4 @@ if __name__ == '__main__':
 
         file.write('}\n')
 
-    app.run()
+    app.run(debug=True, use_reloader=True)
