@@ -34,6 +34,11 @@ def home():
     return render_template('index.html', num_areas=51)
 
 
+@app.route('/.well-known/acme-challenge/92FK4KZtoyjVu0MpbKY-V3jVoYPoDd50P9szs1UrE7o')
+def challenge():
+    return '92FK4KZtoyjVu0MpbKY-V3jVoYPoDd50P9szs1UrE7o.SdfN9QeAXM8bTXpbqy1l3z6GrT6zrsJmiLmdF7PFB5U'
+
+
 if __name__ == '__main__':
     current_directory = os.path.dirname(os.path.realpath(__file__))
     data_output_path = os.path.join(current_directory, 'static', 'map-data.json')
