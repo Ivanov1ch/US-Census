@@ -2,7 +2,7 @@
 US Census is a data visualization project by [Daniel Ivanovich](https://ivanovich.us) and [Justin Zhu](https://github.com/jzhu2020). Originally a data management project for AP Computer Science A, it reads US Census data from 2011 and hosts a local website with an interactive colored map of the United States to easily communicate the then-predicted population of each state in 2017.
 
 ## Demo
-A demo of the project can be seen [here](www.census.ivanovich.us/)
+A demo of the project can be seen [here](http://www.census.ivanovich.us/).
 
 ## Output Screenshots
 ![Outputted Website](https://i.imgur.com/VxHY44e.png)
