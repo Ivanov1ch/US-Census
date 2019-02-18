@@ -2,6 +2,8 @@ from flask import *
 from state import State
 from colour import Color
 import os
+import timeinterval
+import requests
 
 app = Flask(__name__)
 states = []
@@ -27,6 +29,10 @@ def get_color_list():
         colors[index] = "{0}".format(colors[index].hex_l)
 
     return json.dumps(colors)
+
+
+def ping_server():
+    r = requests.get('https://ivanov1ch-census.herokuapp.com/')
 
 
 @app.route('/')
@@ -88,5 +94,7 @@ if __name__ == '__main__':
         file.write('    "colors":{0}\n'.format(get_color_list()))
 
         file.write('}\n')
+
+    ping_loop = timeinterval.start(600000, ping_server)
 
     app.run(debug=True, use_reloader=True)
