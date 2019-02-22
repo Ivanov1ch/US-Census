@@ -5,3 +5,5 @@ site/venv/*
 site/__pycache__/*
 __pychache__/*
 venv/*
+build/*
+*.pyc

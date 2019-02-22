@@ -1,16 +1,7 @@
-import subprocess
-import os
+from flask_frozen import Freezer
+from app import app
 
-# Run Java
-p = subprocess.Popen('javac *.java', cwd=os.path.join('parser', 'src'), shell=True)
-p.communicate()  # Wait for finish
+freezer = Freezer(app)
 
-p = subprocess.Popen('java Parser', cwd=os.path.join('parser', 'src'), shell=True)
-p.communicate()
-
-# Run website
-venv_python = os.path.join('site', 'venv', 'Scripts', 'python.exe')
-if os.path.exists(venv_python):
-    subprocess.call('{0} {1}'.format(venv_python, os.path.join('site', 'app.py')), shell=True)
-else:
-    subprocess.call('{0} {1}'.format('python', os.path.join('site', 'app.py')), shell=True)
+if __name__ == '__main__':
+    freezer.freeze()
