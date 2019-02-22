@@ -2,8 +2,6 @@ from flask import *
 from state import State
 from colour import Color
 import os
-import timeinterval
-import requests
 
 app = Flask(__name__)
 states = []
@@ -31,18 +29,9 @@ def get_color_list():
     return json.dumps(colors)
 
 
-def ping_server():
-    r = requests.get('https://ivanov1ch-census.herokuapp.com/')
-
-
 @app.route('/')
 def home():
     return render_template('index.html', num_areas=51)
-
-
-@app.route('/.well-known/acme-challenge/92FK4KZtoyjVu0MpbKY-V3jVoYPoDd50P9szs1UrE7o')
-def challenge():
-    return '92FK4KZtoyjVu0MpbKY-V3jVoYPoDd50P9szs1UrE7o.SdfN9QeAXM8bTXpbqy1l3z6GrT6zrsJmiLmdF7PFB5U'
 
 
 if __name__ == '__main__':
@@ -94,7 +83,5 @@ if __name__ == '__main__':
         file.write('    "colors":{0}\n'.format(get_color_list()))
 
         file.write('}\n')
-
-    ping_loop = timeinterval.start(600000, ping_server)
 
     app.run(debug=True, use_reloader=True)
